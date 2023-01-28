@@ -1,0 +1,41 @@
+syntax = "proto3";
+
+package node_vs;
+
+option go_package = "proto/plugin";
+
+// Data that should be sent to plugin
+message Input {
+	oneof data {
+		Settings settings = 1;
+		Image image = 2;
+	}
+}
+
+message Settings {
+	string id = 1;
+}
+
+message Image {
+	string name = 1;
+	bytes bytes = 2;
+}
+
+// Data that received from plugin
+message Output {
+	oneof data {
+		Event event = 1;
+		Image image = 2;
+	}
+}
+
+enum EventType {
+	EVENT_TYPE_UNSPECIFIED = 0;
+	EVENT_TYPE_HEARTBEAT = 1;
+}
+
+message Event {
+	EventType type = 1;
+	string name = 2;
+	// bytes bytes = 3;
+}

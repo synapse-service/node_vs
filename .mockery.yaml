@@ -1,0 +1,6 @@
+all: true
+case: underscore
+inpackage: true
+keeptree: true
+recursive: true
+disable-version-string: true
